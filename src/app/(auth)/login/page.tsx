@@ -161,7 +161,7 @@ const Login: React.FC = () => {
           <Button className="w-19.5rem rounded-lg" type="submit" disabled={!isValid}>Login</Button>
         </div>
         <div className='flex justify-start items-center mt-3'>
-          <h6 className={`h6 text-h6 mr-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Don't have an account?</h6>
+          <h6 className={`h6 text-h6 mr-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Don&#39;t have an account?</h6>
           <h6 className='text-login-color text-h6 h6 cursor-pointer'>Sign up here</h6>
         </div>
       </form>
