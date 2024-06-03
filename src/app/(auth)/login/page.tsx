@@ -90,7 +90,7 @@ const Login: React.FC = () => {
                 <option value="+91">+91</option>
                 <option value="+1">+1</option>
                 <option value="+44">+44</option>
-                {/* Add more country codes as needed */}
+              
               </select>
             )}
             <Input
