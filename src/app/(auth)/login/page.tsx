@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Input from '../../components/input/input.component';
 import Button from '@/app/components/button/button.component';
+import { useRouter } from 'next/navigation';
 import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
 
 interface FormValues {
@@ -15,6 +16,7 @@ const Login: React.FC = () => {
   const { register, control, handleSubmit, formState, watch, setValue } = useForm<FormValues>({
     mode: "onChange",
   });
+  const router = useRouter();
   const { errors, isValid } = formState;
 
   const [hydrated, setHydrated] = useState(false);
@@ -44,6 +46,7 @@ const Login: React.FC = () => {
     setShowPassword(prevState => !prevState);
   };
 
+
   useEffect(() => {
     setHydrated(true);
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -65,6 +68,7 @@ const Login: React.FC = () => {
       data.email = countryCode + data.email;
     }
     console.log(data);
+    router.push('/dashboard');
   };
 
   if (!hydrated) {
@@ -155,14 +159,14 @@ const Login: React.FC = () => {
             />
             <h6 className={`text-h6 h6 ${isDarkMode ? 'text-white' : 'text-black'}`}>Remember me</h6>
           </div>
-          <h6 className={`text-login-color cursor-pointer text-h6 h6`}>Forget password?</h6>
+          <h6 className={`text-login-color cursor-pointer text-h6 h6`}> <a href="/changepass">Forget password?</a> </h6>
         </div>
         <div>
           <Button className="w-19.5rem rounded-lg" type="submit" disabled={!isValid}>Login</Button>
         </div>
         <div className='flex justify-start items-center mt-3'>
           <h6 className={`h6 text-h6 mr-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Don&#39;t have an account?</h6>
-          <h6 className='text-login-color text-h6 h6 cursor-pointer'>Sign up here</h6>
+          <h6 className='text-login-color text-h6 h6 cursor-pointer'><a href="/signup">Sign up here</a></h6>
         </div>
       </form>
     </div>

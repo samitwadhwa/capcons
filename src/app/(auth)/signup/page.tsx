@@ -1,10 +1,10 @@
 "use client";
-
 import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Input from '../../components/input/input.component';
 import Button from '@/app/components/button/button.component';
 import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 
 interface FormValues {
   name: string;
@@ -17,7 +17,7 @@ const SignUp: React.FC = () => {
     mode: "onChange",
   });
   const { errors, isValid } = formState;
-
+  const router = useRouter();
   const [hydrated, setHydrated] = useState(false);
   const [showCountryCodeInput, setShowCountryCodeInput] = useState(false);
   const [countryCode, setCountryCode] = useState('');
@@ -66,6 +66,7 @@ const SignUp: React.FC = () => {
       data.email = countryCode + data.email;
     }
     console.log(data);
+    router.push('/login');
   };
 
   if (!hydrated) {
@@ -163,14 +164,14 @@ const SignUp: React.FC = () => {
         </div>
 
         <div className='flex justify-between items-center mb-5'>
-          <h6 className='h6 text-h6'>By signing up, you agree to our Terms , Privacy Policy and Cookies Policy .</h6>
+          <h6 className='h6 text-h6'>By signing up, you agree to our <a href="/terms" className='underline text-login-color'>Terms</a>, <a href="/policy" className='underline text-login-color'>Privacy Policy</a> and <a href="/cookie-policy" className='underline text-login-color'>Cookies Policy .</a></h6>
         </div>
         <div>
           <Button className="w-19.5rem rounded-lg" type="submit" disabled={!isValid}>Signup</Button>
         </div>
         <div className='flex justify-start items-center mt-3'>
           <h6 className={`h6 text-h6 mr-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Already have an account?</h6>
-          <h6 className='text-login-color text-h6 h6 cursor-pointer'>Login here</h6>
+          <h6 className='text-login-color text-h6 h6 cursor-pointer'><a href="/login">Login here</a></h6>
         </div>
       </form>
     </div>
