@@ -141,9 +141,9 @@ const Login: React.FC = () => {
               onClick={handleTogglePasswordVisibility}
             >
               {showPassword ? (
-                <FaRegEyeSlash className="h-4 w-4 text-gray-400" />
-              ) : (
                 <FaEye className="h-4 w-4 text-gray-400" />
+              ) : (
+                <FaRegEyeSlash className="h-4 w-4 text-gray-400" />
               )}
             </button>
           </div>
