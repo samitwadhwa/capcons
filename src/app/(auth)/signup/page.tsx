@@ -74,7 +74,7 @@ const SignUp: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 mt-14">
       <div>
         <h3 className={`text-h3 font-h3 ${isDarkMode ? 'text-white' : 'text-black'}`}>Sign Up</h3>
         <div className='flex'>
@@ -169,9 +169,19 @@ const SignUp: React.FC = () => {
         <div>
           <Button className="w-19.5rem rounded-lg" type="submit" disabled={!isValid}>Signup</Button>
         </div>
-        <div className='flex justify-start items-center mt-3'>
+        <div className='flex justify-start items-center mt-4'>
           <h6 className={`h6 text-h6 mr-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Already have an account?</h6>
           <h6 className='text-login-color text-h6 h6 cursor-pointer'><a href="/login">Login here</a></h6>
+        </div>
+        <div className='flex items-center mt-4'>
+      <div className='flex-grow border-t border-[#F4F4F4]'></div>
+      <span className={`mx-2 ${isDarkMode ? 'text-[#F4F4F4]' : 'text-black'}`}>or continue with</span>
+      <div className='flex-grow border-t  border-[#F4F4F4]'></div>
+      </div>
+
+        <div className='flex justify-start items-center mt-4'>
+          <Button iconType='google'  ></Button>
+          <Button iconType='apple' ></Button>
         </div>
       </form>
     </div>
