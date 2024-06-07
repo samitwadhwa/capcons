@@ -1,41 +1,113 @@
 import React from 'react';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import {
-  CalendarIcon,
-  ChartPieIcon,
-  DocumentDuplicateIcon,
-  FolderIcon,
-  HomeIcon,
-  UsersIcon,
-} from '@heroicons/react/24/outline';
+import { ChevronRightIcon } from '@heroicons/react/24/outline';
+import commerce from '../../../../public/images/Commerce.png';
+import home from '../../../../public/images/home.png';
+import events from '../../../../public/images/events.png';
+import courses from '../../../../public/images/Courses.png';
+import livestream from '../../../../public/images/Livestream.png';
+import insights from '../../../../public/images/insights.png';
+import user from '../../../../public/images/User.png';
+import planBilling from '../../../../public/images/PlanBilling.png';
+import podcasts from '../../../../public/images/podcasts.png';
+import posts from '../../../../public/images/posts.png';
+import returnBar from '../../../../public/images/return.png';
+import category from '../../../../public/images/Category.png';
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+  { name: 'Home', href: '#', icon: home.src, current: false },
   {
-    name: 'Teams',
-    icon: UsersIcon,
+    name: 'Insights',
+    icon: insights.src,
     current: false,
     children: [
       { name: 'Engineering', href: '#', current: false },
       { name: 'Human Resources', href: '#', current: false },
-      { name: 'Customer Success', href: '#', current: false },
     ],
   },
   {
-    name: 'Projects',
-    icon: FolderIcon,
+    name: 'Posts',
+    icon: posts.src,
     current: false,
     children: [
       { name: 'GraphQL API', href: '#', current: false },
       { name: 'iOS App', href: '#', current: false },
-      { name: 'Android App', href: '#', current: false },
-      { name: 'New Customer Portal', href: '#', current: false },
     ],
   },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
+  { name: 'Category', href: '#', icon: category.src, current: false },
+  {
+    name: 'Podcasts',
+    icon: podcasts.src,
+    current: false,
+    children: [
+      { name: 'GraphQL API', href: '#', current: false },
+      { name: 'iOS App', href: '#', current: false },
+    ],
+  },
+  {
+    name: 'Commerce',
+    icon: commerce.src,
+    current: false,
+    children: [
+      { name: 'Products', href: '#', current: true },
+      { name: 'Orders', href: '#', current: false },
+      { name: 'Coupon', href: '#', current: false },
+    ],
+  },
+  {
+    name: 'Livestream',
+    icon: livestream.src,
+    current: false,
+    children: [
+      { name: 'GraphQL API', href: '#', current: false },
+      { name: 'iOS App', href: '#', current: false },
+    ],
+  },
+  {
+    name: 'Events',
+    icon: events.src,
+    current: false,
+    children: [
+      { name: 'GraphQL API', href: '#', current: false },
+      { name: 'iOS App', href: '#', current: false },
+    ],
+  },
+  {
+    name: 'Courses',
+    icon: courses.src,
+    current: false,
+    children: [
+      { name: 'GraphQL API', href: '#', current: false },
+      { name: 'iOS App', href: '#', current: false },
+    ],
+  },
+  {
+    name: 'Users',
+    icon: user.src,
+    current: false,
+    children: [
+      { name: 'GraphQL API', href: '#', current: false },
+      { name: 'iOS App', href: '#', current: false },
+    ],
+  },
+  {
+    name: 'Plan and billing',
+    icon: planBilling.src,
+    current: false,
+    children: [
+      { name: 'GraphQL API', href: '#', current: false },
+      { name: 'iOS App', href: '#', current: false },
+    ],
+  },
+  {
+    name: 'Return',
+    icon: returnBar.src,
+    current: false,
+    children: [
+      { name: 'GraphQL API', href: '#', current: false },
+      { name: 'iOS App', href: '#', current: false },
+    ],
+  },
 ];
 
 function classNames(...classes: string[]) {
@@ -44,8 +116,8 @@ function classNames(...classes: string[]) {
 
 export default function Sidebar() {
   return (
-    <div className="w-64 flex flex-col gap-y-5 overflow-y-auto border-r border-gray-700 bg-[#2A2A2E] px-6 min-h-screen">
-      <div className="flex h-16 shrink-0 items-center"></div>
+    <div className="w-64 flex flex-col overflow-y-auto border-r border-gray-700 bg-[#2A2A2E] px-6 min-h-screen">
+      <div className="flex h-8 shrink-0 items-center"></div>
       <nav className="flex flex-1 flex-col">
         <ul role="list" className="flex flex-1 flex-col gap-y-7">
           <li>
@@ -56,11 +128,16 @@ export default function Sidebar() {
                     <a
                       href={item.href}
                       className={classNames(
-                        item.current ? 'bg-gray-700 text-white' : 'hover:bg-gray-700',
-                        'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-white' // Updated text color to white
+                        item.current ? 'bg-primary text-white' : 'hover:bg-[#62447D]',
+                        'group flex items-center gap-x-3 p-2 text-sm leading-6 font-semibold text-white'
                       )}
                     >
-                      <item.icon className="h-6 w-6 shrink-0 text-white" aria-hidden="true" /> {/* Updated text color to white */}
+                      <img 
+                        src={item.icon} 
+                        alt="" 
+                        className="h-4 w-4 shrink-0 dark:invert" // Apply 'dark:invert' to invert the colors in dark mode
+                        aria-hidden="true" 
+                      />
                       {item.name}
                     </a>
                   ) : (
@@ -69,11 +146,16 @@ export default function Sidebar() {
                         <>
                           <DisclosureButton
                             className={classNames(
-                              item.current ? 'bg-gray-700 text-white' : 'hover:bg-gray-700',
-                              'flex items-center w-full text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-semibold text-white' // Updated text color to white
+                              item.current ? 'bg-primary text-white' : 'hover:bg-[#62447D]',
+                              'flex items-center w-full text-left p-2 gap-x-3 text-sm leading-6 font-semibold text-white'
                             )}
                           >
-                            <item.icon className="h-6 w-6 shrink-0 text-white" aria-hidden="true" /> {/* Updated text color to white */}
+                            <img 
+                              src={item.icon} 
+                              alt="" 
+                              className="h-4 w-4 shrink-0 dark:invert" // Apply 'dark:invert' to invert the colors in dark mode
+                              aria-hidden="true" 
+                            />
                             {item.name}
                             <ChevronRightIcon
                               className={classNames(
@@ -90,8 +172,8 @@ export default function Sidebar() {
                                   as="a"
                                   href={subItem.href}
                                   className={classNames(
-                                    subItem.current ? 'bg-gray-700 text-white' : 'hover:bg-gray-700',
-                                    'block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-white' // Updated text color to white
+                                    subItem.current ? 'bg-primary text-white' : 'hover:bg-[#62447D]',
+                                    'block py-2 pr-2 pl-9 text-sm leading-6 text-white'
                                   )}
                                 >
                                   {subItem.name}

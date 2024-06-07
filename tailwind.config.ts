@@ -54,6 +54,7 @@ const config: Config = {
         "#2A2A2E": "#2A2A2E",
         "#15151B": "#15151B",
         'login-color': '#D6A7FF',
+        "#62447D": "#62447D",
         "coral-red": "#FF6452",
         "slate-gray": "#6D6D6D",
         "pale-blue": "#F5F6FF",

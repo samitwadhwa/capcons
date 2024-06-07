@@ -171,11 +171,11 @@ const SignUp: React.FC = () => {
         </div>
         <div className='flex justify-start items-center mt-5'>
           <h6 className={`h6 text-h6 mr-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Already have an account?</h6>
-          <h6 className='text-login-color text-h6 h6 cursor-pointer'><a href="/login">Login here</a></h6>
+          <h6 className='text-login-color text-h6 h6 cursor-pointer hover:underline'><a href="/login">Login here</a></h6>
         </div>
         <div className='flex items-center mt-5'>
       <div className='flex-grow border-t border-[#A0A0A0]'></div>
-      <span className={`mx-2 ${isDarkMode ? 'text-[#A0A0A0] h6 text-h6' : 'text-black h6 text-h6'}`}>or continue with</span>
+      <span className={`mx-2 ${isDarkMode ? 'text-[#A0A0A0] h6 text-h6' : 'text-[#A0A0A0] h6 text-h6'}`}>or continue with</span>
       <div className='flex-grow border-t  border-[#A0A0A0]'></div>
       </div>
 

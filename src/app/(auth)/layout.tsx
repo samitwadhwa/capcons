@@ -25,7 +25,7 @@ const AuthLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className={`flex min-h-screen ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
       <div className="absolute top-3 left-5 m-4 flex items-center">
-        <img src={logo.src} alt="Company Logo" className="h-8 w-8 mr-2" />
+        <img src={logo.src} alt="Company Logo" className="h-10 w-10 mr-2" />
         <h2 className="text-h2 font-h2">CapCons.</h2>
       </div>
       <div className={`flex flex-col justify-center px-5 w-96 ${isDarkMode ? 'bg-[#15151B]' : 'bg-gray-100'}`}>

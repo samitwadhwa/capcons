@@ -87,7 +87,7 @@ const Login: React.FC = () => {
             {showCountryCodeInput && (
               <select
                 id="countryCode"
-                className={`shadow appearance-none py-2 px-3 leading-tight bg-transparent focus:outline-none focus:shadow-outline border ${isDarkMode ? 'text-slight-grey border-custom-Border' : 'text-gray-600 border-gray-300'}`}
+                className={`shadow appearance-none py-2 px-3 leading-tight bg-transparent focus:outline-none focus:shadow-outline border ${isDarkMode ? 'text-white border-custom-Border' : 'text-gray-600 border-gray-300'}`}
                 value={countryCode}
                 onChange={handleCountryCodeChange}
               >
@@ -110,7 +110,7 @@ const Login: React.FC = () => {
                 }
               })}
               onChange={handleEmailChange}
-              className={`rounded-sm shadow appearance-none py-2 px-3 ${showCountryCodeInput ? 'w-15.6rem' : 'w-19.5rem'} leading-tight bg-transparent focus:outline-none focus:shadow-outline border ${isDarkMode ? 'text-slight-grey border-custom-Border' : 'text-gray-600 border-gray-300'}`}
+              className={`rounded-sm shadow appearance-none py-2 px-3 ${showCountryCodeInput ? 'w-15.6rem' : 'w-19.5rem'} leading-tight bg-transparent focus:outline-none focus:shadow-outline border ${isDarkMode ? 'text-white border-custom-Border' : 'text-gray-600 border-gray-300'}`}
             />
           </div>
           <h6 className="text-red-500 text-h6 h6 text-left mt-[-4px]">{errors?.email?.message}</h6>
@@ -133,7 +133,7 @@ const Login: React.FC = () => {
                   message: "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character!"
                 }
               })}
-              className={`rounded-sm shadow appearance-none py-2 px-3 leading-tight bg-transparent w-19.5rem focus:outline-none focus:shadow-outline border ${isDarkMode ? 'text-slight-grey border-custom-Border' : 'text-gray-600 border-gray-300'}`}
+              className={`rounded-sm shadow appearance-none py-2 px-3 leading-tight bg-transparent w-19.5rem focus:outline-none focus:shadow-outline border ${isDarkMode ? 'text-white border-custom-Border' : 'text-gray-600 border-gray-300'}`}
             />
             <button
               type="button"
@@ -159,14 +159,14 @@ const Login: React.FC = () => {
             />
             <h6 className={`text-h6 h6 ${isDarkMode ? 'text-white' : 'text-black'}`}>Remember me</h6>
           </div>
-          <h6 className={`text-login-color cursor-pointer text-h6 h6`}> <a href="/changepass">Forget password?</a> </h6>
+          <h6 className={`text-login-color cursor-pointer text-h6 h6 hover:underline`}> <a href="/changepass">Forget password?</a> </h6>
         </div>
         <div>
           <Button className="w-19.5rem rounded-lg" type="submit" disabled={!isValid}>Login</Button>
         </div>
         <div className='flex justify-start items-center mt-3'>
           <h6 className={`h6 text-h6 mr-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Don&#39;t have an account?</h6>
-          <h6 className='text-login-color text-h6 h6 cursor-pointer'><a href="/signup">Sign up here</a></h6>
+          <h6 className='text-login-color text-h6 h6 cursor-pointer hover:underline'><a href="/signup">Sign up here</a></h6>
         </div>
       </form>
     </div>
