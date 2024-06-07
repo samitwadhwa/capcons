@@ -2,11 +2,11 @@ import React from 'react';
 
 interface CardProps {
   imageUrl?: string;
-  title: React.ReactNode; // Updated to React.ReactNode
-  description: React.ReactNode; // Updated to React.ReactNode
+  title: React.ReactNode; 
+  description: React.ReactNode;
   date: string;
-  widthClass?: string; // Optional width class
-  chart?: React.ReactNode; // Optional chart component
+  widthClass?: string;
+  chart?: React.ReactNode; 
 }
 
 const Card: React.FC<CardProps> = ({ imageUrl, title, description, date, widthClass = 'max-w-lg', chart }) => {

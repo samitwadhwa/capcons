@@ -1,8 +1,8 @@
 import React from 'react';
-import Chart from '../components/chart/chartComponent'; // Import your Chart component
-import Card from '../components/card/Card';
-import PaymentsTable from '../components/paymentsTable/paymentTable'; // Import your PaymentsTable component
-import Amount from '../../../public/images/collectedAmount.png';
+import Chart from '../../../components/chart/chartComponent'; // Import your Chart component
+import Card from '../../../components/card/Card';
+import PaymentsTable from '../../../components/paymentsTable/paymentTable'; // Import your PaymentsTable component
+import Amount from '../../../../../public/images/collectedAmount.png';
 import { FaExclamationTriangle, FaTimesCircle, FaUndo } from 'react-icons/fa';
 
 const App: React.FC = () => {
@@ -34,7 +34,7 @@ const App: React.FC = () => {
 
   return (
     <div className='space-y-3'>
-      {/* <div className="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-3">
+      <div className="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-3">
         <Card 
           imageUrl={Amount.src}
           title="Collected Amount"
@@ -86,7 +86,7 @@ const App: React.FC = () => {
           widthClass="w-full"
         />
       </div>
-      <PaymentsTable /> */}
+      <PaymentsTable />
     </div>
   );
 };
