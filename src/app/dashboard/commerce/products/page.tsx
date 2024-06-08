@@ -1,94 +1,60 @@
 import React from 'react';
-import Chart from '../../../components/chart/chartComponent'; // Import your Chart component
-import Card from '../../../components/card/Card';
-import PaymentsTable from '../../../components/paymentsTable/paymentTable'; // Import your PaymentsTable component
-import Amount from '../../../../../public/images/collectedAmount.png';
-import { FaExclamationTriangle, FaTimesCircle, FaUndo } from 'react-icons/fa';
 
-const App: React.FC = () => {
-
-  const refundsCard = {
-    icon: <FaUndo className="text-green-500" />,
-    title: 'Refunds',
-    amount: '$0.00',
-    processed: '0 Processed',
-    link: '#'
-  };
-  
-  const disputesCard = {
-    icon: <FaExclamationTriangle className="text-orange-500" />,
-    title: 'Disputes',
-    amount: '$0.00',
-    open: '0 Open',
-    link: '#',
-    extra: 'View All'
-  };
-  
-  const failedCard = {
-    icon: <FaTimesCircle className="text-red-500" />,
-    title: 'Failed',
-    count: '7',
-    description: 'Payments',
-    link: '#'
-  };
-
+const ProductScreen: React.FC = () => {
   return (
-    <div className='space-y-3'>
-      <div className="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-3">
-        <Card 
-          imageUrl={Amount.src}
-          title="Collected Amount"
-          description="from 23 captures payments"
-          date="$71,297.00"
-          widthClass="md:w-1/2" 
-        />
-        <Card 
-          chart={<Chart />}
-          title="Payment Method"
-          description=""
-          date=""
-          widthClass="md:w-1/2" 
-        />
+    <div className='flex justify-around  '>
+    <div className="bg-[#2A2A2E] p-4 rounded-md shadow-md space-y-4 w-[51rem]">
+      <div className="flex justify-between items-start">
+        <div>
+          <h2 className="text-xl font-semibold text-white">Order</h2>
+          <div className="mt-2 text-gray-400">
+            <div>Product 1 (#5246663)</div>
+            <div>Size: XL</div>
+            <div>Colour: Blue</div>
+            <div>Store ID: Stormnorm-50C4</div>
+          </div>
+        </div>
+        <button className="bg-purple-600 text-white px-4 py-2 rounded-md">Change Status</button>
       </div>
-      <div className="grid grid-cols-3 gap-4">
-        <Card
-          title={<div className="flex items-center space-x-2">{refundsCard.icon}<span>{refundsCard.title}</span></div>}
-          description={
-            <div>
-              <div>{refundsCard.amount}</div>
-              <div>{refundsCard.processed}</div>
-            </div>
-          }
-          date=""
-          widthClass="w-full"
-        />
-        <Card
-          title={<div className="flex items-center space-x-2">{disputesCard.icon}<span>{disputesCard.title}</span></div>}
-          description={
-            <div>
-              <div>{disputesCard.amount}</div>
-              <div>{disputesCard.open}</div>
-              <a href={disputesCard.link} className="text-login-color hover:underline">{disputesCard.extra}</a>
-            </div>
-          }
-          date=""
-          widthClass="w-full"
-        />
-        <Card
-          title={<div className="flex items-center space-x-2">{failedCard.icon}<span>{failedCard.title}</span></div>}
-          description={
-            <div>
-              <div>{failedCard.count}</div>
-              <div>{failedCard.description}</div>
-            </div>
-          }
-          date=""
-          widthClass="w-full"
-        />
+
+      <div className="bg-[#3A3A3E] p-4 rounded-md">
+        <h3 className="text-lg font-semibold text-white">Pricing Details</h3>
+        <div className="mt-2 text-gray-400 space-y-2">
+          <div>IGST/CGST/SGST: CGST15 150 150</div>
+          <div>MPR: $5000.00</div>
+          <div>Discount: $250.00 (25%)</div>
+          <div>Payment mode: Credit card</div>
+          <div>Promo code: CH4493</div>
+        </div>
       </div>
-      <PaymentsTable />
+
+      <div className="bg-[#3A3A3E] p-4 rounded-md">
+        <h3 className="text-lg font-semibold text-white">Delivery Details</h3>
+        <div className="mt-2 text-gray-400 space-y-2">
+          <div>Invoice number: CGST15 150 150</div>
+          <div>Logistic partner: Mayank</div>
+          <div>AWB number: xfgejdpqd</div>
+          <div>Delivery date: 21-05-2024</div>
+          <div>Shipping charges: $5.00</div>
+        </div>
+      </div>
+
+      <button className="bg-purple-600 text-white px-4 py-2 rounded-md w-full">Download Invoice</button>
+
     </div>
-  );
+      <div className="bg-[#3A3A3E] p-4 rounded-md">
+        <h3 className="text-lg font-semibold text-white">Timeline</h3>
+        <div className="mt-2 text-gray-400 space-y-2">
+          <div>Payment created: Tue, 28 Nov, 2023, 1:30PM</div>
+          <div>Payment authorized: Tue, 28 Nov, 2023, 1:30PM</div>
+          <div>Payment captured: Tue, 28 Nov, 2023, 1:30PM</div>
+          <div>Payment captured: Tue, 28 Nov, 2023, 1:30PM</div>
+          <div>Payment captured: Tue, 28 Nov, 2023, 1:30PM</div>
+        </div>
+        <button className="bg-purple-600 text-white px-4 py-2 rounded-md mt-4">Return</button>
+      </div>
+    </div>
+  ); 
 };
 
-export default App;
+export default ProductScreen;

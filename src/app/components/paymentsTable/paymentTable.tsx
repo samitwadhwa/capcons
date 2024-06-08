@@ -28,8 +28,40 @@ const PaymentsTable: React.FC = () => {
           <button className="px-4 py-2 bg-purple-600 text-white rounded">Payment</button>
           <button className="px-4 py-2 ml-2 text-purple-600">Refund</button>
         </div>
-        <div>
-          <button className="px-4 py-2 bg-gray-200 rounded">View All</button>
+        <div className="bg-transparent text-white p-4 rounded-lg flex flex-wrap gap-4">
+            <div className="flex flex-col">
+                <label htmlFor="date-range" className="text-sm">Date Range</label>
+                <select id="date-range" className="bg-[#2A2A2E] text-white p-2 rounded">
+                    <option>Last 7 days</option>
+                    <option>Last 30 days</option>
+                    <option>Last 90 days</option>
+                </select>
+            </div>
+            <div className="flex flex-col">
+                <label htmlFor="status" className="text-sm">Status</label>
+                <select id="status" className="bg-[#2A2A2E] text-white p-2 rounded">
+                    <option>All</option>
+                    <option>Authorized</option>
+                    <option>Pending</option>
+                    <option>Failed</option>
+                </select>
+            </div>
+            <div className="flex flex-col">
+                <label htmlFor="payment-method" className="text-sm">Payment Method</label>
+                <select id="payment-method" className="bg-[#2A2A2E] text-white p-2 rounded">
+                    <option>All</option>
+                    <option>Credit Card</option>
+                    <option>UPI</option>
+                    <option>Net Banking</option>
+                </select>
+            </div>
+            <div className="flex flex-col">
+                <label htmlFor="payment-id" className="text-sm">Payment ID</label>
+                <input id="payment-id" type="text" className="bg-[#2A2A2E] text-white p-2 rounded" placeholder="Search" />
+            </div>
+            <div className="flex flex-col justify-end">
+                <button className="bg-purple-600 text-white p-2 rounded mt-auto">Search</button>
+            </div>
         </div>
       </div>
       <div className="overflow-x-auto">
