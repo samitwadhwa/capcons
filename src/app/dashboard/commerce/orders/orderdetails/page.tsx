@@ -4,7 +4,7 @@ import React from 'react';
 const OrderDetail: React.FC = () => {
     return (
         <div className="bg-transparent text-white p-4 rounded-lg flex flex-col gap-8">
-            <div className="flex justify-between items-center bg-[#2A2A2E] w-fit p-4 gap-4">
+            <div className="flex justify-between items-center bg-[#2A2A2E] w-36rem p-4 gap-4">
                 <div>
                     <p className="text-2xl font-semibold">$2,297.00</p>
                     <p>Created on 29 Jun, 2023, 10:40AM</p>

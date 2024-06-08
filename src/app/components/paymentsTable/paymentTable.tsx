@@ -1,6 +1,13 @@
+"use client";
 import React from 'react';
-
+import {useRouter} from 'next/navigation';
 const PaymentsTable: React.FC = () => {
+
+  const router = useRouter();
+
+  const handleClick = () => {
+      router.push('/dashboard/commerce/orders/orderdetails');
+  }
   const data = [
     {
       orderId: '#24325',
@@ -76,6 +83,7 @@ const PaymentsTable: React.FC = () => {
               <th className="px-4 py-2">Delivery</th>
               <th className="px-4 py-2">Payment ID</th>
               <th className="px-4 py-2">Status</th>
+              <th className="px-4 py-2">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -89,6 +97,12 @@ const PaymentsTable: React.FC = () => {
                 <td className="px-4 py-2">{item.location} <br /> {item.pincode}</td>
                 <td className="px-4 py-2">{item.paymentId}</td>
                 <td className="px-4 py-2 text-purple-500">{item.status}</td>
+                <td className="px-4 py-2"> 
+          <button className="mt-2 bg-transparent text-[#D6A7FF] py-1 px-4 rounded" onClick={handleClick}>
+            View Details
+          </button>
+        
+                </td>
               </tr>
             ))}
           </tbody>
