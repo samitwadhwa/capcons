@@ -1,19 +1,20 @@
-// components/OrderDetail.tsx
 import React from 'react';
 
 const OrderDetail: React.FC = () => {
     return (
         <div className="bg-transparent text-white p-4 rounded-lg flex flex-col gap-8">
-            <div className="flex justify-between items-center bg-[#2A2A2E] w-36rem p-4 gap-4">
-                <div>
-                    <p className="text-2xl font-semibold">$2,297.00</p>
+             <div className="flex items-center bg-[#2A2A2E] w-[38.8rem] p-4 gap-4">
+                {/* Image placeholder */}
+                <div className="w-24 h-24 bg-[#FFFFFF] rounded"></div>
+                <div className="flex-1">
+                    <h3 className="text-h3 h3 font-semibold">$2,297.00</h3>
                     <p>Created on 29 Jun, 2023, 10:40AM</p>
                 </div>
-                <span className="bg-purple-600 text-white p-1 rounded">Authorized</span>
+                <span className="bg-[#62447D] text-white p-1 rounded">Authorized</span>
             </div>
             <div className="flex flex-col lg:flex-row gap-8">
                 <div className="flex-1 flex flex-col gap-8">
-                    <div className="bg-[#2A2A2E] rounded-lg flex flex-col gap-4 h-fit w-36rem">
+                    <div className="bg-[#2A2A2E] rounded-lg flex flex-col gap-4 h-fit w-[38.8rem]">
                         <h5 className="text-h5 h5 font-semibold text-white bg-primary p-2 rounded">Payment Mode</h5>
                         <div className='p-4 space-y-2'>
                             <div className="flex justify-between">
@@ -44,6 +45,7 @@ const OrderDetail: React.FC = () => {
                                 <p>Shipping Charges:</p>
                                 <p>150.99</p>
                             </div>
+                            <hr className="border-white-700"/>
                             <div className="flex justify-between">
                                 <p>Total Amount:</p>
                                 <p>450.99</p>
@@ -54,7 +56,7 @@ const OrderDetail: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-[#2A2A2E] rounded-lg flex flex-col gap-4 h-fit w-36rem">
+                    <div className="bg-[#2A2A2E] rounded-lg flex flex-col gap-4 h-fit w-[38.8rem]">
                         <h5 className="text-h5 h5 font-semibold text-white bg-primary p-2 rounded">Customer Details</h5>
                         <div className='p-4 space-y-2'>
                             <div className="flex justify-between">
@@ -74,26 +76,30 @@ const OrderDetail: React.FC = () => {
                 </div>
                 <div className='flex flex-col'>
                     <div className='Sub orders heading'>
-                    <h3 className='h3 text-h3 text-white'>Sub Orders</h3>
+                        <h3 className='h3 text-h3 text-white'>Sub Orders</h3>
                     </div>
-                <div className="bg-[#2A2A2E] rounded-lg flex flex-col gap-4 w-36rem mt-2">
-                    <div className="flex flex-col gap-4">
-                        {Array(4).fill('').map((_, index) => (
-                            <div key={index} className="bg-[#2A2A2E] p-4 rounded-lg flex justify-between items-center">
-                                <div>
-                                    <p>Product 1 (#524663)</p>
-                                    <p>Size: XL</p>
-                                    <p>Colour: Blue</p>
-                                    <p>Store ID: Stormnorm-50C4</p>
+                    <div className="bg-[#2A2A2E] rounded-lg flex flex-col gap-4 w-34rem mt-2">
+                        <div className="flex flex-col gap-4">
+                            {Array(4).fill('').map((_, index) => (
+                                <div key={index} className="bg-[#2A2A2E] p-4 rounded-lg mb-4 flex gap-4 items-center">
+                                    {/* Image placeholder */}
+                                    <div className="w-24 h-24 bg-[#FFFFFF] rounded"></div>
+                                    <div className="flex-1 flex justify-between items-center">
+                                        <div>
+                                            <p className="font-semibold">Product 1 (#524663)</p>
+                                            <p>Size: XL</p>
+                                            <p>Colour: Blue</p>
+                                            <p>Store ID: Stormnorm-50C4</p>
+                                        </div>
+                                        <div className="flex flex-col items-end">
+                                            <h5 className="bg-[#62447D] text-white p-2 text-h5 h5 rounded mb-2">Order Status</h5>
+                                            <button className="bg-transparent text-[#D6A7FF] p-2 rounded">View Invoice</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="flex flex-col items-end">
-                                    <h5 className="bg-[#62447D] text-white p-2 text-h5 h5 rounded mb-2">Order Status</h5>
-                                    <button className="bg-transparent text-[#D6A7FF] p-2 rounded">View Invoice</button>
-                                </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>

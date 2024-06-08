@@ -98,7 +98,7 @@ const PaymentsTable: React.FC = () => {
                 <td className="px-4 py-2">{item.paymentId}</td>
                 <td className="px-4 py-2 text-purple-500">{item.status}</td>
                 <td className="px-4 py-2"> 
-          <button className="mt-2 bg-transparent text-[#D6A7FF] py-1 px-4 rounded" onClick={handleClick}>
+          <button className="bg-transparent text-[#D6A7FF] px-4 rounded" onClick={handleClick}>
             View Details
           </button>
         

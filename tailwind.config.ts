@@ -34,11 +34,12 @@ const config: Config = {
         ]
       },
       width: {
-        "19.5rem": "19.5rem",
         "15.6rem": "15.6rem",
+        "19.5rem": "19.5rem",
+        "34rem": "34rem",
+        "36rem": "36rem",
         "45rem": "45rem",
         "56.8rem": "56.8rem",
-        "36rem": "36rem"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
