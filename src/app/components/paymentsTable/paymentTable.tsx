@@ -65,7 +65,7 @@ const PaymentsTable: React.FC = () => {
         </div>
       </div>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-gray-800 text-white">
+        <table className="min-w-full bg-[#2A2A2E] text-white text-center">
           <thead>
             <tr>
               <th className="px-4 py-2">Order ID</th>

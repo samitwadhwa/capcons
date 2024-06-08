@@ -187,7 +187,7 @@ export default function Sidebar() {
                                 <a
                                   href={subItem.href}
                                   className={classNames(
-                                    isActive(subItem.href ?? '') ? 'bg-[#62447D] text-white' : 'hover:bg-[#62447D]',
+                                    isActive(subItem.href ?? '') ? 'bg-[#62447D] text-white' : 'hover:bg-transparent-700',
                                     'block py-2 pr-2 pl-9 text-sm leading-6 text-white'
                                   )}
                                 >
