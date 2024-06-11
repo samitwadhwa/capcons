@@ -33,7 +33,7 @@ const PaymentsTable: React.FC = () => {
   const router = useRouter();
 
   const handleClick = (orderId: string) => {
-    router.push(`/dashboard/commerce/orders/orderdetails/${orderId}`);
+    router.push(`/dashboard/commerce/orders/${orderId}`);
   };
 
   useEffect(() => {
