@@ -19,7 +19,7 @@ interface DisplayOrder {
   pincode: string;
   paymentId: string;
   status: string;
-  invoiceNumber: string; 
+  invoiceNumber: string;
 }
 
 const PaymentsTable: React.FC = () => {
@@ -29,6 +29,8 @@ const PaymentsTable: React.FC = () => {
   const [status, setStatus] = useState<string>('All');
   const [paymentMethod, setPaymentMethod] = useState<string>('All');
   const [paymentId, setPaymentId] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState<number>(1);
+ 
 
   const router = useRouter();
 
@@ -36,44 +38,46 @@ const PaymentsTable: React.FC = () => {
     router.push(`/dashboard/commerce/orders/${orderId}`);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://capcons.com/go-orders/getordersbycircle?circle=woodland');
-        console.log('API response:', response.data);
+  const totalPages = 843;
 
-        if (response.data && Array.isArray(response.data.data)) {
-          const orders: DisplayOrder[] = response.data.data.flatMap((order: Order) =>
-            order.subOrders.map((subOrder: SubOrder) => ({
-              orderId: order.orderId,
-              date: new Date(order.createdAt).toLocaleDateString(),
-              subOrderId: subOrder.subOrderId,
-              product: subOrder.productId,
-              quantity: subOrder.quantity,
-              amount: `$${subOrder.finalPrice}`,
-              paymentMethod: order.paymentType,
-              customer: `${order.address.firstName} ${order.address.lastName}`,
-              phone: order.phone,
-              email: order.email,
-              location: `${order.address.city}, ${order.address.state}`,
-              pincode: order.address.pincode,
-              paymentId: subOrder.subOrderId,
-              status: subOrder.status[0]?.message || 'N/A',
-              invoiceNumber: subOrder.invoiceNumber
-            }))
-          );
-          setData(orders);
-          setFilteredData(orders);
-        } else {
-          console.error('Expected an array in response.data.data but got:', response.data);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
+  const fetchData = async (page: number) => {
+    try {
+      const response = await axios.get(`https://capcons.com/go-orders/getordersbycircle?circle=woodland&page=${page}`);
+      console.log('API response:', response.data);
+
+      if (response.data && Array.isArray(response.data.data)) {
+        const orders: DisplayOrder[] = response.data.data.flatMap((order: Order) =>
+          order.subOrders.map((subOrder: SubOrder) => ({
+            orderId: order.orderId,
+            date: new Date(order.createdAt).toLocaleDateString(),
+            subOrderId: subOrder.subOrderId,
+            product: subOrder.productId,
+            quantity: subOrder.quantity,
+            amount: `$${subOrder.finalPrice}`,
+            paymentMethod: order.paymentType,
+            customer: `${order.address.firstName} ${order.address.lastName}`,
+            phone: order.phone,
+            email: order.email,
+            location: `${order.address.city}, ${order.address.state}`,
+            pincode: order.address.pincode,
+            paymentId: subOrder.subOrderId,
+            status: subOrder.status[0]?.message || 'N/A',
+            invoiceNumber: subOrder.invoiceNumber
+          }))
+        );
+        setData(orders);
+        setFilteredData(orders);
+      } else {
+        console.error('Expected an array in response.data.data but got:', response.data);
       }
-    };
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
-    fetchData();
-  }, []);
+  useEffect(() => {
+    fetchData(currentPage);
+  }, [currentPage]);
 
   const handleSearch = () => {
     let filtered = data;
@@ -113,6 +117,15 @@ const PaymentsTable: React.FC = () => {
     }
 
     setFilteredData(filtered);
+  };
+
+  const handlePageChange = (newPage: number) => {
+    console.log(newPage);
+    console.log(totalPages);
+    
+    if (newPage > 0 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+    }
   };
 
   return (
@@ -199,6 +212,23 @@ const PaymentsTable: React.FC = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="flex justify-between items-center mt-4">
+        <button 
+          className="px-4 py-2 bg-purple-600 text-white rounded" 
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span className="text-white">Page {currentPage} of {totalPages}</span>
+        <button 
+          className="px-4 py-2 bg-purple-600 text-white rounded" 
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
