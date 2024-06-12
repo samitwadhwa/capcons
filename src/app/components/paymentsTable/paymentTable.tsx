@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { Order, SubOrder } from '@/app/Models/orders';
+import { useOrderId } from '../../contexts/orderIdContext';
 
 interface DisplayOrder {
   orderId: string;
@@ -31,10 +32,10 @@ const PaymentsTable: React.FC = () => {
   const [paymentId, setPaymentId] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
  
-
+  const { setOrderId } = useOrderId();
   const router = useRouter();
-
   const handleClick = (orderId: string) => {
+    setOrderId(orderId);
     router.push(`/dashboard/commerce/orders/${orderId}`);
   };
 
@@ -43,7 +44,6 @@ const PaymentsTable: React.FC = () => {
   const fetchData = async (page: number) => {
     try {
       const response = await axios.get(`https://capcons.com/go-orders/getordersbycircle?circle=woodland&page=${page}`);
-      console.log('API response:', response.data);
 
       if (response.data && Array.isArray(response.data.data)) {
         const orders: DisplayOrder[] = response.data.data.flatMap((order: Order) =>
