@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface OrderIdContextType {
   orderId: string;
@@ -9,7 +9,18 @@ interface OrderIdContextType {
 const OrderIdContext = createContext<OrderIdContextType | undefined>(undefined);
 
 export const OrderIdProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [orderId, setOrderId] = useState<string>('');
+  const [orderId, setOrderId] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('orderId') || '';
+    }
+    return '';
+  });
+
+  useEffect(() => {
+    if (orderId) {
+      localStorage.setItem('orderId', orderId);
+    }
+  }, [orderId]);
 
   return (
     <OrderIdContext.Provider value={{ orderId, setOrderId }}>

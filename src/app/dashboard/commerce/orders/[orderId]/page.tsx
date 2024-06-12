@@ -58,12 +58,14 @@ const OrderDetail: React.FC = () => {
     }
   }, []);
 
- 
   useEffect(() => {
     if (orderId) {
       localStorage.setItem('orderId', orderId);
 
-      axios.get(`https://capcons.com/go-orders/getOrder/${orderId}?circle=woodland`)
+      // Append a unique query string to prevent caching
+      const uniqueQueryString = `&unique=${new Date().getTime()}`;
+
+      axios.get(`https://capcons.com/go-orders/getOrder/${orderId}?circle=woodland${uniqueQueryString}`)
         .then(response => {
           setAddressDetails(response.data.data.address);
           setOrderDetails(response.data.data);

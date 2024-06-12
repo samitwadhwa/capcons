@@ -1,5 +1,3 @@
-// layouts/DashboardLayout.tsx
-
 import React from 'react';
 import { OrderIdProvider } from '../contexts/orderIdContext';
 import { Navbar, NavbarItem, NavbarLabel, NavbarSection } from '../components/navbar/Navbar';
@@ -13,7 +11,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <OrderIdProvider> {/* Wrap children with OrderIdProvider */}
+    <OrderIdProvider> 
       <div className="flex flex-col h-screen text-white">
         {/* Navbar */}
         <Navbar className="bg-[#15151B] text-white p-4 md:drop-shadow-xl flex justify-between items-center">
