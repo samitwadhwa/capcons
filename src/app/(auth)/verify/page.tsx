@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, Suspense } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Button from '@/app/components/button/button.component';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -71,11 +71,6 @@ const Verify: React.FC = () => {
       const response = await axios.post('https://capcons.com/go-auth/verifyGuestLogin', {
         credential,
         otp: otpValue
-      },{
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('credential')}`
-          }
       });   
       if (response.data && response.data.token) {
         // Save credentials to local storage and navigate to dashboard
@@ -92,38 +87,40 @@ const Verify: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <div>
-        <h3 className={`text-h3 font-h3 ${isDarkMode ? 'text-white' : 'text-black'}`}>OTP Verification</h3>
-        <p className='text-p font-p text-[#A0A0A0] mb-5'>Enter your 6 digit code sent to {credential}</p>
-        <p className='text-p font-p text-login-color underline mb-5'><a href="">Edit your number</a></p>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="container mx-auto p-4">
+        <div>
+          <h3 className={`text-h3 font-h3 ${isDarkMode ? 'text-white' : 'text-black'}`}>OTP Verification</h3>
+          <p className='text-p font-p text-[#A0A0A0] mb-5'>Enter your 6 digit code sent to {credential}</p>
+          <p className='text-p font-p text-login-color underline mb-5'><a href="">Edit your number</a></p>
+        </div>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <div className="flex justify-center mb-5">
+            {otp.map((digit, index) => (
+              <input
+                key={index}
+                type="text"
+                maxLength={1}
+                value={digit}
+                onChange={(e) => handleOtpChange(index, e.target.value)}
+                onKeyDown={(e) => handleKeyDown(index, e)}
+                ref={(el) => {
+                  inputRefs.current[index] = el;
+                }}
+                className={`w-12 h-12 mx-1 text-center border rounded-md ${isDarkMode ? 'bg-transparent text-white border-gray-600' : 'bg-white text-black border-gray-300'}`}
+              />
+            ))}
+          </div>
+          <div className='flex justify-start items-center mt-3'>
+            <h6 className={`h6 text-h6 mr-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Didn&#39;t get a code?</h6>
+            <h6 className='text-login-color text-h6 h6 cursor-pointer underline'><a href="/signup">Resend</a></h6>
+          </div>
+          <div className='mt-3'>
+            <Button className="w-full rounded-lg" type="submit">Verify</Button>
+          </div>
+        </form>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="flex justify-center mb-5">
-          {otp.map((digit, index) => (
-            <input
-              key={index}
-              type="text"
-              maxLength={1}
-              value={digit}
-              onChange={(e) => handleOtpChange(index, e.target.value)}
-              onKeyDown={(e) => handleKeyDown(index, e)}
-              ref={(el) => {
-                inputRefs.current[index] = el;
-              }}
-              className={`w-12 h-12 mx-1 text-center border rounded-md ${isDarkMode ? 'bg-transparent text-white border-gray-600' : 'bg-white text-black border-gray-300'}`}
-            />
-          ))}
-        </div>
-        <div className='flex justify-start items-center mt-3'>
-          <h6 className={`h6 text-h6 mr-2 ${isDarkMode ? 'text-white' : 'text-black'}`}>Didn&#39;t get a code?</h6>
-          <h6 className='text-login-color text-h6 h6 cursor-pointer underline'><a href="/signup">Resend</a></h6>
-        </div>
-        <div className='mt-3'>
-          <Button className="w-full rounded-lg" type="submit">Verify</Button>
-        </div>
-      </form>
-    </div>
+    </Suspense>
   );
 };
 
