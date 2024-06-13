@@ -5,7 +5,9 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import Input from '../../components/input/input.component';
 import Button from '@/app/components/button/button.component';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
+
 
 interface FormValues {
   email: string;
@@ -13,7 +15,7 @@ interface FormValues {
 }
 
 const Login: React.FC = () => {
-  const { register, control, handleSubmit, formState, watch, setValue } = useForm<FormValues>({
+  const { register, handleSubmit, formState, watch, setValue } = useForm<FormValues>({
     mode: "onChange",
   });
   const router = useRouter();
@@ -21,8 +23,8 @@ const Login: React.FC = () => {
 
   const [hydrated, setHydrated] = useState(false);
   const [showCountryCodeInput, setShowCountryCodeInput] = useState(false);
-  const [countryCode, setCountryCode] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+  const [countryCode, setCountryCode] = useState('+91');
+  // const [showPassword, setShowPassword] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const emailValue = watch("email");
@@ -42,9 +44,9 @@ const Login: React.FC = () => {
     setCountryCode(e.target.value);
   };
 
-  const handleTogglePasswordVisibility = () => {
-    setShowPassword(prevState => !prevState);
-  };
+  // const handleTogglePasswordVisibility = () => {
+  //   setShowPassword(prevState => !prevState);
+  // };
 
 
   useEffect(() => {
@@ -63,12 +65,23 @@ const Login: React.FC = () => {
     };
   }, []);
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     if (countryCode) {
       data.email = countryCode + data.email;
     }
-    console.log(data);
-    router.push('/dashboard');
+
+    try {
+      const response = await axios.post('https://capcons.com/go-auth/guestLogin', {
+        credential: data.email,
+        circleName: 'woodland'
+      });
+
+      if (response.data) {
+        router.push(`/verify?credential=${encodeURIComponent(data.email)}`);
+      }
+    } catch (error) {
+      console.error("Login failed", error);
+    }
   };
 
   if (!hydrated) {
@@ -115,7 +128,7 @@ const Login: React.FC = () => {
           </div>
           <h6 className="text-red-500 text-h6 h6 text-left mt-[-4px]">{errors?.email?.message}</h6>
         </div>
-
+{/* 
         <div className='mb-5'>
           <div className="relative">
             <Input
@@ -148,7 +161,7 @@ const Login: React.FC = () => {
             </button>
           </div>
           <h6 className='text-red-500 text-left text-h6 h6'>{errors?.password?.message}</h6>
-        </div>
+        </div> */}
 
         <div className='flex justify-between items-center mb-5'>
           <div className='flex items-center'>

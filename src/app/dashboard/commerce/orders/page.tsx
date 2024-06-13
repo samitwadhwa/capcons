@@ -39,7 +39,7 @@ const App: React.FC = () => {
           imageUrl={Amount.src}
           title="Collected Amount"
           description="from 23 captures payments"
-          date="$71,297.00"
+          date="71,297.00"
           widthClass="md:w-1/2" 
         />
         <Card 
