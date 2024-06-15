@@ -28,10 +28,14 @@ const config: Config = {
     extend: {
       dropShadow: {
         'xl': '0 4px 4px #64249E',
+        'l': '0 2px 2px #64249E',
         '4xl': [
             '0 35px 35px #64249E',
             '0 45px 65px #64249E'
         ]
+      },
+      height: {
+        "88vh": "88vh"
       },
       width: {
         "15.6rem": "15.6rem",
@@ -47,8 +51,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        palanquin: ['Palanquin', 'sans-serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
+        customFont: ['GTWalsheim', 'GT-Walsheim-Pro'], 
       },
       colors: {
         'primary': "#6424A0",
@@ -56,12 +59,16 @@ const config: Config = {
         'custom-border': "#F4F4F4",
         "#2A2A2E": "#2A2A2E",
         "#15151B": "#15151B",
+        "#2C2338":"#2C2338",
         'login-color': '#D6A7FF',
         "#62447D": "#62447D",
         "coral-red": "#FF6452",
         "slate-gray": "#6D6D6D",
         "pale-blue": "#F5F6FF",
         "white-400": "rgba(255, 255, 255, 0.80)"
+      },
+      spacing: {
+        "15rem": "15rem"
       },
       boxShadow: {
         '3xl': '0 10px 40px rgba(0, 0, 0, 0.1)'

@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'GTWalsheim'; /* Replace with your font name */
+    src: url('/public/fonts/GT-Walsheim-Pro-Black-Oblique') format('eot'), /* Replace with your font file name */
+         url('/public/fonts/GT-Walsheim-Pro-Black-Oblique') format('ttf'),   /* Replace with your font file name */
+         url('/public/fonts/GT-Walsheim-Pro-Black-Oblique') format('woff'),   /* Replace with your font file name */
+         url('/public/fonts/GT-Walsheim-Pro-Black-Oblique') format('woff2'),   /* Replace with your font file name */
+         url('/public/fonts/GT-Walsheim-Pro-Black') format('eot'),   /* Replace with your font file name */
+         url('/public/fonts/GT-Walsheim-Pro-Black') format('ttf'),   /* Replace with your font file name */
+         url('/public/fonts/GT-Walsheim-Pro-Black') format('woff'),   /* Replace with your font file name */
+         url('/public/fonts/GT-Walsheim-Pro-Black') format('woff2'),   /* Replace with your font file name */
+         url('/public/fonts/GT-Walsheim-Pro-Bold-Oblique') format('eot'),   /* Replace with your font file name */
+         url('/public/fonts/GT-Walsheim-Pro-Bold-Oblique') format('ttf'),   /* Replace with your font file name */
+         url('/public/fonts/GT-Walsheim-Pro-Bold-Oblique') format('woff'),   /* Replace with your font file name */
+         url('/public/fonts/GT-Walsheim-Pro-Bold-Oblique') format('woff2'),   /* Replace with your font file name */
+         url('/public/fonts/GT-Walsheim-Pro-Bold') format('eot');   /* Replace with your font file name */
+    font-weight: normal;
+    font-style: normal;
+  }
