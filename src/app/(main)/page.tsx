@@ -4,7 +4,7 @@ import Button from '../components/button/button.component';
 import Slider from './components/slider';
 import FeaturesSection from './components/featuresSection';
 import IphonePic from '../../../public/images/Iphone.png';
-import CardSection from './components/ThreeLinkCards';
+import CardSection, { BlogSection } from './components/ThreeLinkCards';
 import ReviewCardsSection from './components/ReviewsCard';
 
 const Main = () => {
@@ -19,7 +19,7 @@ const Main = () => {
           </h4>
           <div className='p-4'>
 
-          <Button className="w-[15.6rem] bg-purple-700 text-white font-bold py-2 px-4 !mt-[3.5rem] rounded">Get Started</Button>
+          <Button className="w-[15.6rem] bg-purple-700 text-white bg-solid font-bold py-2 px-4 !mt-[3.5rem] rounded">Get Started</Button>
           </div>
         </section>
 
@@ -46,6 +46,10 @@ const Main = () => {
 
     <section className='py-4 w-full md:mt-8'>
     <ReviewCardsSection/>
+    </section>
+
+    <section className='py-4 w-full md:mt-8'>
+    <BlogSection/>
     </section>
 
 

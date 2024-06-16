@@ -44,6 +44,7 @@ const config: Config = {
         "36rem": "36rem",
         "45rem": "45rem",
         "56.8rem": "56.8rem",
+        "90rem": "90rem"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -6,34 +6,34 @@ import Image from 'next/image';
 const slides = [
   {
     id: 1,
-    images: [
-      { src: '/images/Image1.png', alt: 'Image 1', text: '#run #sport', caption: 'Reach new heights' },
-      { src: '/images/Image2.png', alt: 'Image 2', text: '#gym #motivation', caption: 'Show your achievements' },
-      { src: '/images/Image3.png', alt: 'Image 3', text: '#Metropolis', caption: 'Urbanization' },
+    media: [
+      { src: '/images/01.png', type: 'image', alt: 'image', text: '#run #sport', caption: 'Reach new heights', width: 500, height: 500 },
+      { src: '/videos/GIF2.mp4', type: 'video', alt: 'Video', text: '#gym #motivation', caption: 'Abstract from Space', width: 500, height: 500 },
+      { src: '/images/03.png', type: 'image', alt: 'image', text: '#Metropolis', caption: 'Urbanization', width: 500, height: 500 },
     ],
   },
   {
     id: 2,
-    images: [
-      { src: '/images/Image4.png', alt: 'Image 4', text: '#nature #space', caption: 'Abstract from Space' },
-      { src: '/images/Image5.png', alt: 'Image 5', text: '#nature #greenery', caption: 'Waterfall' },
-      { src: '/images/Image6.png', alt: 'Image 6', text: '#technology #3dprint', caption: 'Technology' },
+    media: [
+      { src: '/videos/GIF4.mp4', type: 'video', alt: 'Video', text: '#nature #space', caption: 'Abstract from Space', width: 500, height: 500 },
+      { src: '/images/05.png', type: 'image', alt: 'Image', text: '#nature #greenery', caption: 'Waterfall', width: 500, height: 800 },
+      { src: '/images/06.png', type: 'image', alt: 'Video', text: '#technology #3dprint', caption: 'Technology', width: 500, height: 500 },
     ],
   },
   {
     id: 3,
-    images: [
-      { src: '/images/Image7.png', alt: 'Image 7', text: '#city #night', caption: 'City Life' },
-      { src: '/images/Image8.png', alt: 'Image 8', text: '#travel #adventure', caption: 'Adventure' },
-      { src: '/images/Image9.png', alt: 'Image 9', text: '#future #innovation', caption: 'Innovation' },
+    media: [
+      { src: '/images/07.png', type: 'image', alt: 'Image', text: '#city #night', caption: 'City Life', width: 500, height: 500 },
+      { src: '/videos/GIF8.mp4', type: 'video', alt: 'Video', text: '#travel #adventure', caption: 'Adventure', width: 500, height: 500 },
+      { src: '/images/09.png', type: 'image', alt: 'Image', text: '#future #innovation', caption: 'Innovation', width: 500, height: 500 },
     ],
   },
   {
     id: 4,
-    images: [
-      { src: '/images/Image10.png', alt: 'Image 10', text: '#city #night', caption: 'City Life' },
-      { src: '/images/Image11.png', alt: 'Image 11', text: '#travel #adventure', caption: 'Adventure' },
-      { src: '/images/Image12.png', alt: 'Image 12', text: '#future #innovation', caption: 'Innovation' },
+    media: [
+      { src: '/videos/GIF10.mp4', type: 'video', alt: 'Video', text: '#city #night', caption: 'City Life', width: 500, height: 500 },
+      { src: '/images/11.png', type: 'image', alt: 'Image', text: '#travel #adventure', caption: 'Adventure', width: 500, height: 500 },
+      { src: '/images/12.png', type: 'image', alt: 'Image', text: '#future #innovation', caption: 'Innovation', width: 500, height: 500 },
     ],
   },
 ];
@@ -44,18 +44,18 @@ const Slider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 3000);
+    }, 3000); // Updated interval to 5000ms
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative w-full h-[800px] overflow-hidden">
-      <div className="absolute left-0 top-0 flex flex-col justify-center items-center h-full space-y-2 z-10">
+    <div className="relative w-[1200px] h-[650px] overflow-visible mx-auto mt-8">
+      <div className="absolute left-[-50px] top-1/2 transform -translate-y-1/2 flex flex-col justify-center items-center h-full space-y-2 z-10">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`w-3 h-3 rounded-full ${
+            className={`w-6 h-6 rounded-full ${
               currentSlide === index ? 'bg-purple-500' : 'bg-gray-500'
             }`}
           ></div>
@@ -69,49 +69,41 @@ const Slider = () => {
               <motion.div
                 key={slide.id}
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-0 grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-4"
+                animate={{ opacity: 1, transition: { delay: 0.5, duration: 0.5, ease: "easeIn" } }}
+                exit={{ opacity: 0, transition: { duration: 0.5, ease: "easeIn" } }}
+                className="absolute inset-0 grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-4 p-8"
               >
-                <div className="relative w-full h-full rounded-xl overflow-hidden">
-                  <Image
-                    src={slide.images[0].src}
-                    alt={slide.images[0].alt}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-xl"
-                  />
-                  <div className="absolute left-4 bottom-4 text-white">
-                    <h3 className="text-2xl font-bold">{slide.images[0].caption}</h3>
-                    <p className="text-lg">{slide.images[0].text}</p>
+                {slide.media.map((item, mediaIndex) => (
+                  <div
+                    key={mediaIndex}
+                    className="relative w-full h-full rounded-xl overflow-hidden"
+                  >
+                    {item.type === 'video' ? (
+                      <video
+                        src={item.src}
+                        autoPlay
+                        muted
+                        width={item.width}
+                        height={item.height}
+                        loop
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        width={item.width}
+                        height={item.height}
+                        layout="responsive"
+                        className="object-cover"
+                      />
+                    )}
+                    <div className="absolute left-4 bottom-4 text-white">
+                      <h3 className="text-2xl font-bold">{item.caption}</h3>
+                      <p className="text-lg">{item.text}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="relative w-full h-full rounded-xl overflow-hidden">
-                  <Image
-                    src={slide.images[1].src}
-                    alt={slide.images[1].alt}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-xl"
-                  />
-                  <div className="absolute left-4 bottom-4 text-white">
-                    <h3 className="text-2xl font-bold">{slide.images[1].caption}</h3>
-                    <p className="text-lg">{slide.images[1].text}</p>
-                  </div>
-                </div>
-                <div className="relative w-full h-full rounded-xl overflow-hidden">
-                  <Image
-                    src={slide.images[2].src}
-                    alt={slide.images[2].alt}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-xl"
-                  />
-                  <div className="absolute left-4 bottom-4 text-white">
-                    <h3 className="text-2xl font-bold">{slide.images[2].caption}</h3>
-                    <p className="text-lg">{slide.images[2].text}</p>
-                  </div>
-                </div>
+                ))}
               </motion.div>
             )
         )}

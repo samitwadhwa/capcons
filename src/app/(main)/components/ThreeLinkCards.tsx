@@ -3,11 +3,11 @@
 const features = [
   {
     id: 1,
-    image: '/images/feature1.png', // Replace with your image paths
+    image: '/images/feature1.png', 
     title: 'App Builder',
     description: 'Whenever Passion rolls out new features, your app is updated automatically - at no extra cost.',
     linkText: 'Link to page',
-    linkUrl: '#', // Replace with actual link
+    linkUrl: '#', 
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const features = [
     title: 'App Builder',
     description: 'Whenever Passion rolls out new features, your app is updated automatically - at no extra cost.',
     linkText: 'Link to page',
-    linkUrl: '#', // Replace with actual link
+    linkUrl: '#', 
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ const features = [
     title: 'App Builder',
     description: 'Whenever Passion rolls out new features, your app is updated automatically - at no extra cost.',
     linkText: 'Link to page',
-    linkUrl: '#', // Replace with actual link
+    linkUrl: '#', 
   },
 ];
 
@@ -43,12 +43,27 @@ const FeatureCard = ({ feature }: any) => (
 );
 
 const CardSection = () => (
-  <div className="container mx-auto py-10 px-4">
+  <div className="container py-10 px-4">
     <h3 className="text-h3 h3 font-bold mb-4">
       Tap into the features which let users come back
     </h3>
     <h5 className="text-h5 h5 text-gray-400 mb-8">
       Whenever Passion rolls out new features, your app is updated automatically - at no extra cost.
+    </h5>
+    <div className="flex justify-center space-x-6">
+      {features.map((feature) => (
+        <FeatureCard key={feature.id} feature={feature} />
+      ))}
+    </div>
+  </div>
+);
+export const BlogSection = () => (
+  <div className="container py-10 px-4">
+    <h2 className="text-h2 h2 font-bold mb-4">
+      Blogs and Events
+    </h2>
+    <h5 className="text-h5 h5 text-gray-400 mb-8">
+      Everything You Need To Launch And Grow
     </h5>
     <div className="flex justify-center space-x-6">
       {features.map((feature) => (
