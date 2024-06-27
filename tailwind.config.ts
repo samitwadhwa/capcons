@@ -40,6 +40,7 @@ const config: Config = {
       width: {
         "15.6rem": "15.6rem",
         "19.5rem": "19.5rem",
+        "25rem": "25rem",
         "34rem": "34rem",
         "36rem": "36rem",
         "45rem": "45rem",

@@ -6,7 +6,7 @@ import Input from '../../components/input/input.component';
 import Button from '@/app/components/button/button.component';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import { FaEye, FaRegEyeSlash } from 'react-icons/fa';
+
 
 
 interface FormValues {
