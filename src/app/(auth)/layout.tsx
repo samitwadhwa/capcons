@@ -33,7 +33,7 @@ const AuthLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       </div>
       <div className="hidden lg:block">
         <img
-          className="absolute h-full w-3/4 object-cover"
+          className="absolute h-full w-4/5 object-cover"
           src={bgImage.src}
           alt=""
         />
