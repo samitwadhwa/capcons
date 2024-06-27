@@ -46,6 +46,7 @@ interface AddressDetails {
   state: string;
   landmark: string;
   addressType: string;
+  phone: string;
 }
 
 const OrderDetail: React.FC = () => {
@@ -69,8 +70,10 @@ const OrderDetail: React.FC = () => {
       // Append a unique query string to prevent caching
       const uniqueQueryString = `&unique=${new Date().getTime()}`;
 
-      const token = localStorage.getItem('credential');
-
+      let token: string | null = null;
+      if (typeof window !== 'undefined') {
+        token = localStorage.getItem('credential');
+      }
       const config = {
         headers: { Authorization: `Bearer ${token}` }
       };
@@ -130,7 +133,7 @@ const OrderDetail: React.FC = () => {
               </div>
               <div className="flex justify-between">
                 <p>Discount:</p>
-                <p className='flex items-center'><img src={currency.src} alt="" className='w-4 h-4' />{orderDetails.discount}</p>
+                <p className='flex items-center'><img src={currency.src} alt="" className='w-4 h-4' />{orderDetails.discount ? orderDetails.discount : '0'}</p>
               </div>
               <div className="flex justify-between">
                 <p>Promo:</p>
@@ -138,7 +141,7 @@ const OrderDetail: React.FC = () => {
               </div>
               <div className="flex justify-between">
                 <p>Shipping Charges:</p>
-                <p className='flex items-center'><img src={currency.src} alt="" className='w-4 h-4' />{orderDetails.shippingCharges}</p>
+                <p className='flex items-center'><img src={currency.src} alt="" className='w-4 h-4' />{orderDetails.shippingCharges ? orderDetails.shippingCharges : '0'}</p>
               </div>
               <div className="flex justify-between">
                 <p>Donation:</p>

@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { Order, SubOrder } from '@/app/Models/orders';
 import { useOrderId } from '../../contexts/orderIdContext';
+import currency from '../../../../public/images/currency.png';
+
 
 interface DisplayOrder {
   orderId: string;
@@ -49,7 +51,11 @@ const PaymentsTable: React.FC = () => {
 
   const totalPages = 843;
 
-  const token = localStorage.getItem('credential');
+  let token: string | null = null;
+  if (typeof window !== 'undefined') {
+    token = localStorage.getItem('credential');
+  }
+
   const config = {
     headers: { Authorization: `Bearer ${token}` }
   };
@@ -67,7 +73,7 @@ const PaymentsTable: React.FC = () => {
             product: subOrder.productId,
             quantity: subOrder.quantity,
             awb: subOrder.awbNumber,
-            amount: `$${subOrder.finalPrice}`,
+            amount: `${subOrder.finalPrice}`,
             paymentMethod: order.paymentType,
             customer: `${order.address.firstName} ${order.address.lastName}`,
             phone: order.phone,
@@ -114,7 +120,7 @@ const PaymentsTable: React.FC = () => {
             product: subOrder.productId,
             quantity: subOrder.quantity,
             awb: subOrder.awbNumber,
-            amount: `$${subOrder.finalPrice}`,
+            amount: `${subOrder.finalPrice}`,
             paymentMethod: order.paymentType,
             customer: `${order.address.firstName} ${order.address.lastName}`,
             phone: order.phone,
@@ -211,7 +217,7 @@ const PaymentsTable: React.FC = () => {
                     <td className="px-4 py-2">{item.orderId}<br/>{item.date}</td>
                     <td className="px-4 py-2 text-purple-500">{item.subOrderId}<br/>{item.amount}</td>
                     <td className="px-4 py-2">{item.product} Qty: {item.quantity}</td>
-                    <td className="px-4 py-2">{item.amount}<br/>{item.paymentMethod}</td>
+                    <td className="px-4 py-2 flex items-start"><img src={currency.src} alt="" className='w-4 h-4 mt-1' />{item.amount}<br/>{item.paymentMethod}</td>
                     <td className="px-4 py-2">{item.invoiceNumber}</td>
                     <td className="px-4 py-2">{item.customer}<br/>{item.phone}<br/>{item.email}</td>
                     <td className="px-4 py-2">{item.location}<br/>{item.pincode}</td>
